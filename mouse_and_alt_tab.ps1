@@ -1,15 +1,11 @@
 Add-Type -AssemblyName System.Windows.Forms
-$wsh = New-Object -ComObject wscript.shell
 
 while ($true)
 {  
-  $Pos = [System.Windows.Forms.Cursor]::Position
-  $r = Get-Random -Minimum 50 -Maximum 1250
-  $x = ($pos.X % 500) + r
-  $r = Get-Random -Minimum 50 -Maximum 1250
-  $y = ($pos.Y % 500) + r
+  $wshell = New-Object -ComObject wscript.shell
+  $x = Get-Random -Minimum 500 -Maximum 2000
+  $y = Get-Random -Minimum 500 -Maximum 1200
   [System.Windows.Forms.Cursor]::Position = New-Object System.Drawing.Point($x, $y)
-  $wsh = SendKeys("%({TAB})")
-  $wsh = SendKeys("%({TAB})")
+  $wshell.SendKeys('%({TAB})')
   Start-Sleep -Seconds 10
 }
